@@ -48,6 +48,10 @@ app.get("/test", (req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.redirect(301, "/test");
+});
+
 // unknown route
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   const err = new Error(`Route ${req.originalUrl} not found`) as any;
